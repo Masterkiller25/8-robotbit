@@ -1,11 +1,46 @@
+radio.onReceivedNumber(function (receivedNumber) {
+    if (receivedNumber == 1) {
+        arme = (arme + 1) % 2
+        if (arme == 0) {
+            robotbit.MotorRun(robotbit.Motors.M1B, 0)
+        }
+        if (arme == 1) {
+            robotbit.MotorRun(robotbit.Motors.M1B, 255)
+        }
+    }
+})
+radio.onReceivedString(function (receivedString) {
+    if ("ok" == receivedString) {
+        basic.showLeds(`
+            # # # . .
+            . . . # .
+            # # . . #
+            . . # . #
+            # . # . #
+            `)
+    }
+    if ("no" == receivedString) {
+        basic.showLeds(`
+            . . # . .
+            . # # # .
+            # # # # #
+            . # . # .
+            . # . # .
+            `)
+        basic.pause(500)
+        x = 0
+        y = 0
+    }
+})
 radio.onReceivedValue(function (name, value) {
     if ("x" == name) {
         x = value / 4
     }
     if ("y" == name) {
-        y = 0 - value / 4
+        y = value / 4
     }
 })
+let arme = 0
 let x = 0
 let y = 0
 basic.showLeds(`
@@ -21,8 +56,8 @@ radio.setGroup(6)
 basic.forever(function () {
     robotbit.MotorRunDual(
     robotbit.Motors.M1A,
-    x - y,
+    y + x,
     robotbit.Motors.M2A,
-    x + y
+    y - x
     )
 })
