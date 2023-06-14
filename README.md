@@ -1,5 +1,5 @@
 
-> Ouvrir cette page à [https://masterkiller25.github.io/8-robotbit-le-bon/](https://masterkiller25.github.io/8-robotbit-le-bon/)
+> Ouvrir cette page à [https://masterkiller25.github.io/8-robotbit/](https://masterkiller25.github.io/8-robotbit/)
 
 ## Utiliser comme extension
 
